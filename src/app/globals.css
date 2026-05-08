@@ -1,32 +1,88 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark, .dark *));
+
+@theme {
+  /* Colors */
+  --color-background: #ffffff;
+  --color-surface: #f7f9fb;
+  --color-surface-highlight: #edf2f7;
+  --color-primary: #0891b2;
+  --color-secondary: #9333ea;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-border: rgba(0, 0, 0, 0.05);
+
+  /* Font */
+  --font-geist-sans: var(--font-geist-sans), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html.dark {
+    color-scheme: dark;
+    --color-background: #131313;
+    --color-surface: #1c1b1b;
+    --color-surface-highlight: #3a3939;
+    --color-primary: #00ffff;
+    --color-secondary: #a855f7;
+    --color-text: #ffffff;
+    --color-text-secondary: #a1a1aa;
+    --color-border: rgba(255, 255, 255, 0.05);
+  }
+
+  html.dark * {
+    --color-background: #131313;
+    --color-surface: #1c1b1b;
+    --color-surface-highlight: #3a3939;
+    --color-primary: #00ffff;
+    --color-secondary: #a855f7;
+    --color-text: #ffffff;
+    --color-text-secondary: #a1a1aa;
+    --color-border: rgba(255, 255, 255, 0.05);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html,
+  body {
+    height: 100%;
+    font-family: var(--font-geist-sans);
+    background: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.5;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease;
+    scrollbar-gutter: stable;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
