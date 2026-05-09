@@ -2,8 +2,12 @@
 
 @custom-variant dark (&:is(.dark, .dark *));
 
+/**
+ * Global Tailwind Theme Overrides
+ * Customizes colors and font families for the project.
+ */
 @theme {
-  /* Colors */
+  /* Dynamic Color Palette */
   --color-background: #ffffff;
   --color-surface: #f7f9fb;
   --color-surface-highlight: #edf2f7;
@@ -13,11 +17,15 @@
   --color-text-secondary: #64748b;
   --color-border: rgba(0, 0, 0, 0.05);
 
-  /* Font */
+  /* Font Configurations */
   --font-geist-sans: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
 }
 
+/**
+ * Base Layer Styles
+ * Resets and default element behavior.
+ */
 @layer base {
   * {
     margin: 0;
@@ -25,6 +33,7 @@
     box-sizing: border-box;
   }
 
+  /* Dark Mode Overrides */
   html.dark {
     color-scheme: dark;
     --color-background: #131313;
@@ -47,9 +56,7 @@
     --color-text-secondary: #a1a1aa;
     --color-border: rgba(255, 255, 255, 0.05);
   }
-}
 
-@layer base {
   html,
   body {
     height: 100%;
@@ -63,6 +70,19 @@
   }
 }
 
+/**
+ * Modal & Sheet Animations
+ */
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Common element styles */
 img,
 picture,
 video,
