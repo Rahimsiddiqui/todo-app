@@ -10,7 +10,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Aura Todo",
+  title: "Todo App",
   description: "Minimalist Todo App",
 };
 
