@@ -83,21 +83,21 @@ const TodoList = ({ todos }) => {
   };
 
   return (
-    <ul className="mt-10 space-y-4 mb-20">
+    <ul className="mt-10 space-y-4 pb-20">
       {todos.map((todo) => (
         <li
           key={todo.id}
           id={`todo-${todo.id}`}
-          className={`relative group flex flex-col sm:flex-row items-center justify-between py-4 px-5 rounded-lg bg-surface border border-border gap-7 sm:gap-0 transition-all duration-500 ${
-            highlightedTodoId === todo.id 
-              ? "ring-2 ring-primary shadow-[0_0_15px_rgba(0,255,255,0.3)] scale-[1.02] z-20" 
+          className={`relative group flex flex-col sm:flex-row items-center justify-between py-4 px-5 rounded-lg bg-surface border border-border gap-7 sm:gap-0 transition-all duration-300 ${
+            highlightedTodoId === todo.id
+              ? "ring-2 ring-primary shadow-[0_0_15px_rgba(0,255,255,0.3)] scale-[1.02] z-20"
               : ""
           }`}
         >
-          {/* Action: Delete Task (revealed on hover) */}
+          {/* Action: Delete Task */}
           <button
             onClick={() => deleteTodo(todo.id)}
-            className="absolute -top-2 -right-2 p-2 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg z-10 cursor-pointer"
+            className="absolute -top-2 -right-2 p-2 bg-red-500 hover:bg-red-600 dark:bg-red-600/90 dark:hover:bg-red-600 transition-[background-color] duration-200 text-white rounded-full shadow-lg z-10 cursor-pointer"
             title="Delete task"
           >
             <Trash2 size={14} />
@@ -138,7 +138,9 @@ const TodoList = ({ todos }) => {
           {/* Metadata: Priority & Timestamp */}
           <div className="flex flex-col sm:flex-row gap-4 items-center">
             <div className="flex flex-col items-end gap-1">
-              <p className={`py-2 px-3.5 rounded-lg text-xs font-semibold ${getPriorityThemeClasses(todo.theme)}`}>
+              <p
+                className={`py-2 px-3.5 rounded-lg text-xs font-semibold ${getPriorityThemeClasses(todo.theme)}`}
+              >
                 {todo.priority}
               </p>
             </div>

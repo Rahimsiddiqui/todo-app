@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative z-50 flex flex-row min-w-screen justify-between items-center px-6 sm:px-8 py-4 md:py-3 bg-surface/80 transition-colors duration-300">
+    <div className="fixed top-0 z-50 flex flex-row min-w-screen justify-between items-center px-6 sm:px-8 py-4 md:py-3 bg-surface transition-colors duration-300">
       <Link
         className="font-bold text-text text-xl min-[450px]:text-2xl hover:opacity-90 transition-opacity duration-300 relative z-50"
         href="/"
@@ -61,17 +61,14 @@ const Navbar = () => {
         </button>
 
         {/* Global Search Trigger */}
-        <div 
-          className="relative cursor-pointer"
-          onClick={toggleCommandMenu}
-        >
+        <div className="relative cursor-pointer" onClick={toggleCommandMenu}>
           <input
             type="text"
             readOnly
             placeholder="Search tasks..."
             className="w-full border border-border rounded-full pr-4 pl-12.5 py-2.5 bg-surface-highlight/50 font-geist-sans text-text transition-[background-color] duration-300 cursor-pointer"
           />
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-text/60 dark:text-text-80" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-text/60 dark:text-text/80" />
           <span className="absolute text-[11px] rounded-lg right-6 top-1/2 -translate-y-1/2 text-text/80 uppercase">
             Ctrl/Cmd + K
           </span>

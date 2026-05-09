@@ -27,6 +27,7 @@ const Todo = () => {
         {tabs.map((tab) => (
           <li
             key={tab}
+            role="tab"
             onClick={() => setFilter(tab)}
             className="relative cursor-pointer text-base font-mono font-medium"
           >

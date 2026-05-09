@@ -1,26 +1,29 @@
 import { GeistSans } from "geist/font/sans";
 import { JetBrains_Mono } from "next/font/google";
-import { TaskProvider } from "@/context/TaskContext";
 import "./globals.css";
+import { TaskProvider } from "@/context/TaskContext";
+import { LazyMotion, domMax } from "framer-motion";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 });
 
-/**
- * Root Layout component that provides global font variables and the TaskProvider context.
- */
+export const metadata = {
+  title: "Aura Todo",
+  description: "Minimalist Todo App",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${jetbrainsMono.variable} dark h-full w-full overflow-hidden antialiased`}
+      className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-full flex flex-col">
-        <TaskProvider>
-          {children}
-        </TaskProvider>
+      <body className="antialiased overflow-x-hidden!">
+        <LazyMotion features={domMax}>
+          <TaskProvider>{children}</TaskProvider>
+        </LazyMotion>
       </body>
     </html>
   );

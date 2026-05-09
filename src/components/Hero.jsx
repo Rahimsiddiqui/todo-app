@@ -5,12 +5,12 @@ import CardList from "./CardList";
  */
 const Hero = () => {
   return (
-    <div className="w-full max-w-5xl mx-auto px-6 mt-10 md:mt-20">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl md:text-5xl font-bold font-mono tracking-tight text-text">
-          Focus on what <br className="hidden md:block" /> matters.
+    <div className="w-full max-w-5xl mx-auto px-6 mt-35 md:mt-40">
+      <div className="flex flex-col gap-6 sm:gap-5">
+        <h1 className="text-3xl md:text-5xl font-bold font-geist-sans leading-wide text-text">
+          Welcome, Commander!
         </h1>
-        <p className="text-sm md:text-base text-text/60 font-mono">
+        <p className="text-sm md:text-base text-text/60 tracking-wide font-geist-sans">
           Track your tasks, build streaks, and stay productive.
         </p>
       </div>

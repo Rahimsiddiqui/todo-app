@@ -10,8 +10,8 @@ const getThemeClasses = (theme) => {
   switch (theme) {
     case "primary":
       return {
-        icon: "text-primary",
-        subtitle: "text-primary",
+        icon: "text-primary dark:text-primary/80",
+        subtitle: "text-primary dark:text-primary/80",
       };
     case "secondary":
       return {
@@ -59,7 +59,7 @@ const CardList = () => {
     {
       title: "Current Streak",
       value: streak.count,
-      valueSub: "days",
+      valueSub: streak.count <= 1 ? "day" : "days",
       subtitle:
         streak.count === 0
           ? "No streak yet — start now"
@@ -91,10 +91,12 @@ const CardList = () => {
               {card.title}
             </h3>
 
-            <div className="mt-3.5 mb-1.25">
+            <div className="mt-3.75 mb-1.5">
               <p className="text-2xl font-semibold text-text font-geist-sans">
                 {card.value}
-                <span className={`${card.valueSub === "days" ? "ml-1" : "ml-0.5"} text-[0.9rem] text-text/60`}>
+                <span
+                  className={`${card.valueSub === "days" || card.valueSub === "day" ? "ml-1" : "ml-0.5"} text-[0.9rem] text-text/60`}
+                >
                   {card.valueSub}
                 </span>
               </p>
