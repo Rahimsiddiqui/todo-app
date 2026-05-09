@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { LucideCloudLightning, CheckCircle, FlameIcon } from "lucide-react";
+import { useTask } from "@/context/TaskContext";
 
+/**
+ * Maps task theme identifiers to their respective icon and subtitle Tailwind classes.
+ */
 const getThemeClasses = (theme) => {
   switch (theme) {
     case "primary":
@@ -10,19 +13,16 @@ const getThemeClasses = (theme) => {
         icon: "text-primary",
         subtitle: "text-primary",
       };
-
     case "secondary":
       return {
         icon: "text-secondary",
         subtitle: "text-secondary",
       };
-
     case "fire":
       return {
         icon: "text-amber-600",
         subtitle: "opacity-60",
       };
-
     default:
       return {
         icon: "",
@@ -31,31 +31,17 @@ const getThemeClasses = (theme) => {
   }
 };
 
+/**
+ * CardList displays a dashboard overview of user progress (completion rate, streak, remaining tasks).
+ * Automatically updates when the global TaskContext changes.
+ */
 const CardList = () => {
-  const [todos, setTodos] = useState([]);
-  const [streak, setStreak] = useState({
-    count: 0,
-    lastActive: null,
-  });
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
-    setTodos(storedTodos);
-
-    const storedStreak = JSON.parse(localStorage.getItem("streak")) || {
-      count: 0,
-      lastActive: null,
-    };
-
-    setStreak(storedStreak);
-  }, []);
+  const { todos, streak } = useTask();
 
   const completedTodos = todos.filter((todo) => todo.completed);
-
   const pendingTodos = todos.filter((todo) => !todo.completed);
 
+  // Calculate current completion percentage
   const completionRate =
     todos.length > 0
       ? Math.round((completedTodos.length / todos.length) * 100)
@@ -108,10 +94,7 @@ const CardList = () => {
             <div className="mt-3.5 mb-1.25">
               <p className="text-2xl font-semibold text-text font-geist-sans">
                 {card.value}
-
-                <span
-                  className={`${card.valueSub === "days" ? "ml-1" : "ml-0.5"} text-[0.9rem] text-text/60`}
-                >
+                <span className={`${card.valueSub === "days" ? "ml-1" : "ml-0.5"} text-[0.9rem] text-text/60`}>
                   {card.valueSub}
                 </span>
               </p>
