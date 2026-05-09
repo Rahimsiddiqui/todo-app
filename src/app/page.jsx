@@ -1,12 +1,13 @@
-import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Todo from "@/components/Todo";
 
 const LandingPage = () => {
   return (
     <>
       <Navbar />
-
-      <Footer />
+      <Hero />
+      <Todo />
     </>
   );
 };
